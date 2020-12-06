@@ -32,4 +32,21 @@ public class Library {
 	public static long[] toArrayLong(List<String> l) {
 		return l.stream().mapToLong(i -> Long.parseLong(i)).toArray();
 	}
+
+	public List<String> splitNewLine(List<String> l) {
+		List<String> r = new ArrayList<>();
+
+		StringBuilder sb = new StringBuilder();
+		for (String s : l) {
+			if ("".equals(s)) {
+				r.add(sb.toString().trim());
+				sb.setLength(0); // clear
+			} else {
+				sb.append(s);
+				sb.append(" ");
+			}
+		}
+		r.add(sb.toString().trim());
+		return r;
+	}
 }
